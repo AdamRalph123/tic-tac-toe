@@ -1,3 +1,12 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from time import sleep # welcome message animation
+import random # for computers move 
+
+welcome_message = "Welcome to the Tic Tac Toe game!\n"
+
+for x in welcome_message:
+    print(x, end='')
+    sleep(.2)
+
+
+
+
