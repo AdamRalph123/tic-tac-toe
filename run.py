@@ -25,5 +25,26 @@ Read instructions to play the game: \n
 - The computer (opposition) will follow by the letter 'O'
 - To place your letter type a number between 1-9 this will choose your position
 - The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
-- If all of the 9 spaces are full and no one has won the game will end in a draw
+- If all of the 9 spaces are full and no one has won, the game will end in a draw
 '''
+
+def player_name():
+    '''
+    Gets players name and only accpeting letters
+    '''
+    while True:
+        global name 
+        name = input("\nPlease enter your name\n").capitalize()
+
+        if name.isalpha():
+            print("\n")
+            print(f"Hi{name} Welcome to Tic Tac Toe!")
+            print(game_instructions)
+
+            break
+
+        else:
+            print("Invalid input, only letters accepted.")
+            print("Please try again.")
+
+    player_name()
