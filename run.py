@@ -27,6 +27,7 @@ Read instructions to play the game: \n
 - The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
 - If all of the 9 spaces are full and no one has won, the game will end in a draw
 '''
+print(game_instructions)
 
 def player_name():
     '''
@@ -48,3 +49,19 @@ def player_name():
             print("Please try again.")
 
     player_name()
+
+    def start_game():
+        '''
+        asks the user to enter 'S' so the game can start
+        '''
+        while True:
+            start_game_input = input("Type 'S' to start the game:\n").lower()
+            if start_game_input == 's':
+                game_starting = 'Game starting...'
+                print(game_starting, end="\r")
+                time.sleep(1)
+                print(" " * len(game_starting), end="\r")
+                time.sleep(1)
+                break
+            else:
+                print(f"{start_game_input} Incorrect input, press 'S' to start game.")
