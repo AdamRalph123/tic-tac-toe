@@ -18,7 +18,7 @@ o_score = 0
 
 game_instructions = '''
 
-Read instructions to play the game: \n
+Please read instructions to play the game: \n
 - The game displays a 3X3 grid
 - The user(you) will start the game first with the letter 'X'
 - The computer (opposition) will follow by the letter 'O'
@@ -33,7 +33,6 @@ def get_name():
     '''
     Gets players name and only accpeting letters.
     '''
-    print("Welcome to the Tic Tac Toe game!\n")
     print("What is your name?")
     while True:
         name = input("\nMy name is: ")
@@ -41,28 +40,37 @@ def get_name():
             print("Please enter letters only.")
             continue
         else:
-            print(f"Hello{name}. Welcome to Tic Tac Toe")
+            print(f"Welcome {name}!")
             break
     return name
 
 
-    def start_game():
-        '''
-        asks the user to enter 'S' so the game can start
-        '''
-        while True:
-            start_game_input = input("Type 'S' to start the game:\n").lower()
-            if start_game_input == 's':
-                game_starting = 'Game starting...'
-                print(game_starting, end="\r")
-                time.sleep(1)
-                print(" " * len(game_starting), end="\r")
-                time.sleep(1)
-                break
-            else:
-                print(f"{start_game_input}Incorrect input, press 'S' to start game.")
+get_name()
 
-    def board():
-        print('|'+board[1]+'|'+board[2]+'|'+board[2]+'|')
-        print('|'+board[4]+'|'+board[5]+'|'+board[6]+'|')
-        print('|'+board[7]+'|'+board[8]+'|'+board[9]+'|')
+
+def start_game():
+    '''
+    asks the user to enter 'S' so the game can start
+    '''
+    while True:
+        start_game_input = input("Type 'S' to start the game:\n").lower()
+        if start_game_input == 's':
+            game_starting = 'Game starting...'
+            print(game_starting, end="\r")
+            sleep(1)
+            print(" " * len(game_starting), end="\r")
+            sleep(1)
+            break
+        else:
+            print(f"{start_game_input}Incorrect input, press 'S' to start game.")
+
+start_game()
+
+
+def board():
+
+    print('|'+board[1]+'|'+board[2]+'|'+board[2]+'|')
+    print('|'+board[4]+'|'+board[5]+'|'+board[6]+'|')
+    print('|'+board[7]+'|'+board[8]+'|'+board[9]+'|')
+
+board()
