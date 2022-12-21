@@ -1,5 +1,4 @@
 from time import sleep  # welcome message animation
-import random  # for computers move
 import sys  # to access parameters and functions
 
 welcome_message = "Welcome to the Tic Tac Toe game!\n"
@@ -7,10 +6,10 @@ welcome_message = "Welcome to the Tic Tac Toe game!\n"
 for x in welcome_message:
     print(x, end='')
     sys.stdout.flush()
-    sleep(.2)
+    sleep(.1)
 
-player_move  = 'X'
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+player_move = 'X'
+board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
 winner = None
 name = None
 x_score = 0
@@ -29,26 +28,23 @@ Read instructions to play the game: \n
 '''
 print(game_instructions)
 
-def player_name():
+
+def get_name():
     '''
-    Gets players name and only accpeting letters
+    Gets players name and only accpeting letters.
     '''
+    print("Welcome to the Tic Tac Toe game!\n")
+    print("What is your name?")
     while True:
-        global name 
-        name = input("\nPlease enter your name\n").capitalize()
-
-        if name.isalpha():
-            print("\n")
-            print(f"Hi{name} Welcome to Tic Tac Toe!")
-            print(game_instructions)
-
-            break
-
+        name = input("\nMy name is: ")
+        if not name.isalpha():
+            print("Please enter letters only.")
+            continue
         else:
-            print("Invalid input, only letters accepted.")
-            print("Please try again.")
+            print(f"Hello{name}. Welcome to Tic Tac Toe")
+            break
+    return name
 
-    player_name()
 
     def start_game():
         '''
@@ -64,4 +60,9 @@ def player_name():
                 time.sleep(1)
                 break
             else:
-                print(f"{start_game_input} Incorrect input, press 'S' to start game.")
+                print(f"{start_game_input}Incorrect input, press 'S' to start game.")
+
+    def board():
+        print('|'+board[1]+'|'+board[2]+'|'+board[2]+'|')
+        print('|'+board[4]+'|'+board[5]+'|'+board[6]+'|')
+        print('|'+board[7]+'|'+board[8]+'|'+board[9]+'|')
