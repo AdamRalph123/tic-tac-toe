@@ -9,7 +9,9 @@ for x in welcome_message:
     sleep(.1)
 
 player_move = 'X'
-board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
+board = ["-", "-", "-",
+         "-", "-", "-",
+         "-", "-", "-"]
 winner = None
 name = None
 x_score = 0
@@ -64,13 +66,17 @@ def start_game():
         else:
             print(f"{start_game_input}Incorrect input, press 'S' to start game.")
 
+
 start_game()
 
 
-def board():
+def printboard(board):
 
-    print('|'+board[1]+'|'+board[2]+'|'+board[2]+'|')
-    print('|'+board[4]+'|'+board[5]+'|'+board[6]+'|')
-    print('|'+board[7]+'|'+board[8]+'|'+board[9]+'|')
+    print(board[0] + " | " + board[1] + " | " + board[2])
+    print("----------")
+    print(board[3] + " | " + board[4] + " | " + board[5])
+    print("----------")
+    print(board[6] + " | " + board[7] + " | " + board[8])
 
-board()
+
+printboard(board)
