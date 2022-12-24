@@ -26,7 +26,7 @@ Please read instructions to play the game: \n
 - The computer (opposition) will follow by the letter 'O'
 - To place your letter type a number between 1-9 this will choose your position
 - The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
-- If all of the 9 spaces are full and no one has won, the game will end in a draw
+- If all of the 9 spaces are full and no one has won, the game will end in a tie
 '''
 print(game_instructions)
 
@@ -90,6 +90,29 @@ def playerInput(board):
         print("Oops, that spot is already taken")
 
 
+def checkRow(board):
+    global winner
+    if board[0] == board[3] == board[6] and board[0] != "-":
+        winner = board[0]
+        return True
+    elif board[1] == board[4] == board[7] and board[1] != "-":
+        winner = board[1]
+        return True
+    elif board[2] == board[5] == board[8] and board[2] != "-":
+        winner = board[2]
+        return True
+
+
+def checkDiagonally(board):
+    global winner
+    if board[0] == board[4] == board[8] and board[0] != "-":
+        winner = board[0]
+        return True
+    elif board[2] == board[4] == board[6] and board[2] != "-":
+        winner = board[2]
+        return True
+    
+
 def checkHorizontal(board):
     global winner
     if board[0] == board[1] == board[2] and board[1] != "-":
@@ -103,6 +126,28 @@ def checkHorizontal(board):
         return True
 
 
+def checkTie(board):
+    global gameRunning
+    if "-" not in board:
+        printboard(board)
+        print("It is a tie!")
+        gameRunning = False
+
+def checkWin():
+    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
+        print(f"The winner is{winner}")
+
+def switchPlayer():
+    global currentPlayer
+    if currentPlayer == "X":
+        currentPlayer = "O"
+    else:
+        currentPlayer = "X"
+
+
 while gameRunning:
     printboard(board)
     playerInput(board)
+    checkWin(board)
+    checkTie(board)
+    switchPlayer
