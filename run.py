@@ -9,7 +9,6 @@ for x in welcome_message:
     sys.stdout.flush()
     sleep(.1)
 
-player_move = 'X'
 board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-"]
@@ -71,16 +70,13 @@ def start_game():
 start_game()
 
 
-def printboard(board):
+def printBoard(board):
 
     print(board[0] + " | " + board[1] + " | " + board[2])
-    print("----------")
+    print("---------")
     print(board[3] + " | " + board[4] + " | " + board[5])
-    print("----------")
+    print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
-
-
-printboard(board)
 
 
 def playerInput(board):
@@ -130,7 +126,7 @@ def checkHorizontal(board):
 def checkTie(board):
     global gameRunning
     if "-" not in board:
-        printboard(board)
+        printBoard(board)
         print("It is a tie!")
         gameRunning = False
 
@@ -150,14 +146,14 @@ def switchPlayer():
 def computer(board):
     while currentPlayer == "O":
         position = random.randint(0, 8)
+        
         if board[position] == "-":
             board[position] = "O"
             switchPlayer()
 
 
-
 while gameRunning:
-    printboard(board)
+    printBoard(board)
     playerInput(board)
     checkWin()
     checkTie(board)
