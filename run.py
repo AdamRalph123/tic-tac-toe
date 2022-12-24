@@ -1,5 +1,6 @@
 from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
+import random
 
 welcome_message = "Welcome to the Tic Tac Toe game!\n"
 
@@ -145,9 +146,22 @@ def switchPlayer():
         currentPlayer = "X"
 
 
+# computer
+def computer(board):
+    while currentPlayer == "O":
+        position = random.randint(0, 8)
+        if board[position] == "-":
+            board[position] = "O"
+            switchPlayer()
+
+
+
 while gameRunning:
     printboard(board)
     playerInput(board)
-    checkWin(board)
+    checkWin()
     checkTie(board)
-    switchPlayer
+    switchPlayer()
+    computer(board)
+    checkWin()
+    checkTie(board)
