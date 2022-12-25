@@ -152,6 +152,29 @@ def computer(board):
             switchPlayer()
 
 
+def clear_board():
+    '''
+    Clears the board if user wants to play again
+    '''
+    board.extend([" ", " ", " ", " ", " ", " ", " ", " ", " "])
+    board.clear()
+
+
+def return_to_main_page():
+    '''
+    Asks users if they want to play again or quit
+    '''
+    print("*** Game Over *** \n")
+
+    print("Enter 'P' to play again \n")
+    print("Enter 'Q' if you want to quit the game \n")
+    while True:
+        global name
+        make_a_choice = input().strip()
+        if make_a_choice.lower() == 'q':
+            
+
+
 while gameRunning:
     printBoard(board)
     playerInput(board)
