@@ -77,14 +77,15 @@ def printBoard(board):
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
-
+    #
+    
 
 def playerInput(board):
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-        board[inp-1] = currentPlayer
+         board[inp-1] = currentPlayer
     else:
-        print("Oops, that spot is already taken")
+        print("Oops player is in that spot!")
 
 
 def checkRow(board):
@@ -130,9 +131,8 @@ def checkTie(board):
         print("It is a tie!")
         gameRunning = False
 
-def checkWin():
-    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
-        print(f"The winner is{winner}")
+        return_to_main_page()
+
 
 def switchPlayer():
     global currentPlayer
@@ -150,6 +150,13 @@ def computer(board):
         if board[position] == "-":
             board[position] = "O"
             switchPlayer()
+
+
+def checkWin(board):
+    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
+        print(f"The winner is {winner}")
+
+        return_to_main_page()
 
 
 def clear_board():
@@ -172,15 +179,20 @@ def return_to_main_page():
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
-            
+            print(f"Thank you for playing the game {name}.")
+            quit()
+        elif make_a_choice == 'p':
+            print(f"Welcome back!")
+            start_game()
+            clear_board()
+            playerInput(board)
 
 
 while gameRunning:
     printBoard(board)
     playerInput(board)
-    checkWin()
+    checkWin(board)
     checkTie(board)
     switchPlayer()
     computer(board)
-    checkWin()
     checkTie(board)
