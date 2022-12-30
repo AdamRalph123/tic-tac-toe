@@ -14,8 +14,8 @@ board = ["-", "-", "-",
          "-", "-", "-"]
 winner = None
 name = None
-currentPlayer = "X"
-gameRunning = True
+current_player = "X"
+game_running = True
 
 
 game_instructions = '''
@@ -70,7 +70,7 @@ def start_game():
 start_game()
 
 
-def printBoard(board):
+def print_board(board):
 
     print(board[0] + " | " + board[1] + " | " + board[2])
     print("---------")
@@ -80,15 +80,15 @@ def printBoard(board):
     #
     
 
-def playerInput(board):
+def player_input(board):
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-         board[inp-1] = currentPlayer
+         board[inp-1] = current_player
     else:
         print("Oops player is in that spot!")
 
 
-def checkRow(board):
+def check_row(board):
     global winner
     if board[0] == board[3] == board[6] and board[0] != "-":
         winner = board[0]
@@ -101,7 +101,7 @@ def checkRow(board):
         return True
 
 
-def checkDiagonally(board):
+def check_diagonally(board):
     global winner
     if board[0] == board[4] == board[8] and board[0] != "-":
         winner = board[0]
@@ -111,7 +111,7 @@ def checkDiagonally(board):
         return True
     
 
-def checkHorizontal(board):
+def check_horizontal(board):
     global winner
     if board[0] == board[1] == board[2] and board[1] != "-":
         winner = board[0]
@@ -124,39 +124,40 @@ def checkHorizontal(board):
         return True
 
 
-def checkTie(board):
-    global gameRunning
+def check_tie(board):
+    global game_running
     if "-" not in board:
-        printBoard(board)
+        print_board(board)
         print("It is a tie!")
-        gameRunning = False
+        game_running = False
 
         return_to_main_page()
 
 
-def switchPlayer():
-    global currentPlayer
-    if currentPlayer == "X":
-        currentPlayer = "O"
+def switch_player():
+    global current_player
+    if current_player == "X":
+        current_player = "O"
     else:
-        currentPlayer = "X"
+        current_player = "X"
 
 
 # computer
 def computer(board):
-    while currentPlayer == "O":
+    while current_player == "O":
         position = random.randint(0, 8)
         
         if board[position] == "-":
             board[position] = "O"
-            switchPlayer()
+            switch_player()
 
 
-def checkWin(board):
-    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
+def check_win(board):
+    if check_row(board) or check_diagonally(board) or check_horizontal(board):
         print(f"The winner is {winner}")
 
         return_to_main_page()
+
 
 
 def clear_board():
@@ -169,30 +170,24 @@ def clear_board():
 
 def return_to_main_page():
     '''
-    Asks users if they want to play again or quit
+    Asks users if they want to quit
     '''
     print("*** Game Over *** \n")
 
-    print("Enter 'P' to play again \n")
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
-            print(f"Thank you for playing the game {name}.")
+            print(f"Thank you for playing Tic Tac Toe.")
             quit()
-        elif make_a_choice == 'p':
-            print(f"Welcome back!")
-            start_game()
-            clear_board()
-            playerInput(board)
 
 
-while gameRunning:
-    printBoard(board)
-    playerInput(board)
-    checkWin(board)
-    checkTie(board)
-    switchPlayer()
+while game_running:
+    print_board(board)
+    player_input(board)
+    check_win(board)
+    check_tie(board)
+    switch_player()
     computer(board)
-    checkTie(board)
+    check_tie(board)
