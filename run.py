@@ -41,6 +41,7 @@ def get_name():
         if not name.isalpha():
             print("Please enter letters only.")
             continue
+
         else:
             print(f"Welcome {name}!")
             break
@@ -77,7 +78,6 @@ def print_board(board):
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
-    #
     
 
 def player_input(board):
@@ -174,6 +174,7 @@ def return_to_main_page():
     '''
     print("*** Game Over *** \n")
 
+    print("Enter 'P' if you want to play again")
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
@@ -181,6 +182,11 @@ def return_to_main_page():
         if make_a_choice.lower() == 'q':
             print(f"Thank you for playing Tic Tac Toe.")
             quit()
+        elif make_a_choice == 'p':
+            print("Welcome again!")
+            start_game()
+            clear_board()
+            player_input(board)
 
 
 while game_running:
@@ -191,3 +197,4 @@ while game_running:
     switch_player()
     computer(board)
     check_tie(board)
+
