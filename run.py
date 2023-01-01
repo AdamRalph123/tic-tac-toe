@@ -1,6 +1,6 @@
 from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
-import random
+import random  # computers turn
 
 welcome_message = "Welcome to the Tic Tac Toe game!\n"
 
@@ -25,9 +25,17 @@ Please read instructions to play the game: \n
 - The user(you) will start the game first with the letter 'X'
 - The computer (opposition) will follow by the letter 'O'
 - To place your letter type a number between 1-9 this will choose your position
-- The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
-- If all of the 9 spaces are full and no one has won, the game will end in a tie
-'''
+- The first display their letter ('X', 'O')
+  horizontally, vertically or diagonally wins!
+- If all of the 9 spaces are full and no one has won,
+  the game will end in a tie
+
+                           1 | 2 |  3
+                          ------------
+                           4 | 5  | 6
+                          ------------
+                           7 | 8  | 9
+                           '''
 print(game_instructions)
 
 
@@ -37,7 +45,7 @@ def get_name():
     '''
     print("What is your name?")
     while True:
-        name = input("\nMy name is: ")
+        name = input("My name is: ")
         if not name.isalpha():
             print("Please enter letters only.")
             continue
@@ -53,7 +61,7 @@ get_name()
 
 def start_game():
     '''
-    asks the user to enter 'S' so the game can start
+    asks the user to enter 's' so the game can start
     '''
     while True:
         start_game_input = input("Type 'S' to start the game:\n").lower()
@@ -78,14 +86,15 @@ def print_board(board):
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
-    
+
 
 def player_input(board):
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-         board[inp-1] = current_player
+        board[inp-1] = current_player
     else:
         print("Oops player is in that spot!")
+        switch_player()
 
 
 def check_row(board):
@@ -109,7 +118,7 @@ def check_diagonally(board):
     elif board[2] == board[4] == board[6] and board[2] != "-":
         winner = board[2]
         return True
-    
+
 
 def check_horizontal(board):
     global winner
@@ -146,7 +155,6 @@ def switch_player():
 def computer(board):
     while current_player == "O":
         position = random.randint(0, 8)
-        
         if board[position] == "-":
             board[position] = "O"
             switch_player()
@@ -159,34 +167,19 @@ def check_win(board):
         return_to_main_page()
 
 
-
-def clear_board():
-    '''
-    Clears the board if user wants to play again
-    '''
-    board.extend([" ", " ", " ", " ", " ", " ", " ", " ", " "])
-    board.clear()
-
-
 def return_to_main_page():
     '''
     Asks users if they want to quit
     '''
     print("*** Game Over *** \n")
 
-    print("Enter 'P' if you want to play again")
-    print("Enter 'Q' if you want to quit the game \n")
+    print("Enter 'q' if you want to quit the game \n")
     while True:
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
             print(f"Thank you for playing Tic Tac Toe.")
             quit()
-        elif make_a_choice == 'p':
-            print("Welcome again!")
-            start_game()
-            clear_board()
-            player_input(board)
 
 
 while game_running:
@@ -197,4 +190,3 @@ while game_running:
     switch_player()
     computer(board)
     check_tie(board)
-
