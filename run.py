@@ -1,7 +1,9 @@
+'''imports'''
 from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
 import random  # computers turn
 
+# welcome title with animation
 welcome_message = "Welcome to the Tic Tac Toe game!\n"
 
 for x in welcome_message:
@@ -17,7 +19,7 @@ name = None
 current_player = "X"
 game_running = True
 
-
+# print game instructions
 game_instructions = '''
 
 Please read instructions to play the game: \n
@@ -39,6 +41,7 @@ Please read instructions to play the game: \n
 print(game_instructions)
 
 
+# players name input
 def get_name():
     '''
     Gets players name and only accpeting letters.
@@ -97,6 +100,7 @@ def player_input(board):
         switch_player()
 
 
+# checking possible winning options
 def check_row(board):
     global winner
     if board[0] == board[3] == board[6] and board[0] != "-":
@@ -143,6 +147,7 @@ def check_tie(board):
         return_to_main_page()
 
 
+# switching player 'X' to computer 'O'
 def switch_player():
     global current_player
     if current_player == "X":
@@ -160,9 +165,14 @@ def computer(board):
             switch_player()
 
 
+# check to see who the winner is
 def check_win(board):
     if check_row(board) or check_diagonally(board) or check_horizontal(board):
-        print(f"The winner is {winner}")
+        print_board(board)
+        if winner == 'X':
+            print("You are the winner!")
+        elif winner == 'O':
+            print("Oops the computer has won")
 
         return_to_main_page()
 
