@@ -17,7 +17,7 @@ board = ["-", "-", "-",
 winner = None
 name = None
 current_player = "X"
-game_running = True
+
 
 # print game instructions
 game_instructions = '''
@@ -91,15 +91,6 @@ def print_board(board):
     print(board[6] + " | " + board[7] + " | " + board[8])
 
 
-def player_input(board):
-    inp = int(input("Enter a number 1-9: "))
-    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-        board[inp-1] = current_player
-    else:
-        print("Oops player is in that spot!")
-        switch_player()
-
-
 # checking possible winning options
 def check_row(board):
     global winner
@@ -138,13 +129,10 @@ def check_horizontal(board):
 
 
 def check_tie(board):
-    global game_running
-    if "-" not in board:
-        print_board(board)
-        print("It is a tie!")
-        game_running = False
-
-        return_to_main_page()
+    if board.count("-") > 1:
+        return False
+    else:
+        return True
 
 
 # switching player 'X' to computer 'O'
@@ -166,7 +154,7 @@ def computer(board):
 
 
 # check to see who the winner is
-def check_win(board):
+def check_win(board):  
     if check_row(board) or check_diagonally(board) or check_horizontal(board):
         print_board(board)
         if winner == 'X':
@@ -175,6 +163,13 @@ def check_win(board):
             print("Oops the computer has won")
 
         return_to_main_page()
+
+    elif check_tie(board):
+        print_board(board)
+        print("It's a Tie")
+        return_to_main_page()
+    else:
+        return None
 
 
 def return_to_main_page():
@@ -192,11 +187,36 @@ def return_to_main_page():
             quit()
 
 
-while game_running:
-    print_board(board)
-    player_input(board)
-    check_win(board)
-    check_tie(board)
-    switch_player()
-    computer(board)
-    check_tie(board)
+def player_input():
+
+    while True:
+
+        print_board(board)
+
+        while True:
+
+            try:
+                
+                user_input = int(input("Enter a number 1-9: "))
+                if user_input in range(1, 10):
+                    if board[user_input] == "-":
+                        board[user_input] = current_player
+                        break      
+                    else:
+                        print(f"Oops player is in that spot!")
+                        
+                else:
+                    print("Invalid selection. Number must be between 1-9")
+                    
+            except ValueError:
+                print("Oops invalid input. Please enter a valid number")
+                        
+        check_win(board)
+        check_tie(board)
+        switch_player()
+        computer(board)
+        check_win(board)
+        check_tie(board)
+
+
+player_input()
