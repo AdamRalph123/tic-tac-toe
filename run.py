@@ -99,14 +99,14 @@ def check_row(board):
     checks for possible row win
     '''
     global winner
-    if board[0] == board[3] == board[6] and board[0] != "-":
-        winner = board[0]
-        return True
-    elif board[1] == board[4] == board[7] and board[1] != "-":
+    if board[1] == board[2] == board[3] and board[1] != ' ':
         winner = board[1]
         return True
-    elif board[2] == board[5] == board[8] and board[2] != "-":
-        winner = board[2]
+    elif board[4] == board[5] == board[6] and board[4] != ' ':
+        winner = board[4]
+        return True
+    elif board[7] == board[8] == board[9] and board[9] != ' ':
+        winner = board[7]
         return True
 
 
@@ -115,27 +115,27 @@ def check_diagonally(board):
     checks for possible diagonal win
     '''
     global winner
-    if board[0] == board[4] == board[8] and board[0] != "-":
-        winner = board[0]
+    if board[1] == board[5] == board[9] and board[9] != ' ':
+        winner = board[1]
         return True
-    elif board[2] == board[4] == board[6] and board[2] != "-":
-        winner = board[2]
-        return True
-
-
-def check_horizontal(board):
-    '''
-    checks for possible horizontal win
-    '''
-    global winner
-    if board[0] == board[1] == board[2] and board[1] != "-":
-        winner = board[0]
-        return True
-    elif board[3] == board[4] == board[5] and board[3] != "-":
+    elif board[3] == board[5] == board[7] and board[7] != ' ':
         winner = board[3]
         return True
-    elif board[6] == board[7] == board[8] and board[6] != "-":
-        winner = board[6]
+
+
+def check_colum(board):
+    '''
+    checks for possible vertical win
+    '''
+    global winner
+    if board[1] == board[4] == board[7] and board[1] != ' ':
+        winner = board[1]
+        return True
+    elif board[2] == board[5] == board[8] and board[8] != ' ':
+        winner = board[2]
+        return True
+    elif board[3] == board[6] == board[9] and board[9] != ' ':
+        winner = board[3]
         return True
 
 
@@ -143,7 +143,7 @@ def check_tie(board):
     '''
     checks for a tie, prints a message to let the user know
     '''
-    if board.count("-") > 1:
+    if board.count(' ') > 1:
         return False
     else:
         return True
@@ -168,7 +168,7 @@ def computer(board):
     '''
     while current_player == "O":
         position = random.randint(1, 9)
-        if board[position] == "-":
+        if board[position] == ' ':
             board[position] = "O"
             switch_player()
 
@@ -178,7 +178,7 @@ def check_win(board):
     '''
     checks for the winner or a tie
     '''
-    if check_row(board) or check_diagonally(board) or check_horizontal(board):
+    if check_row(board) or check_diagonally(board) or check_colum(board):
         print_board(board)
         if winner == 'X':
             print("You are the winner!")
@@ -225,7 +225,7 @@ def player_input():
               
                 user_input = int(input("Enter a number 1-9: "))
                 if user_input in range(1, 10):
-                    if board[user_input] == "-":
+                    if board[user_input] == ' ':
                         board[user_input] = current_player
                         break      
                     else:
