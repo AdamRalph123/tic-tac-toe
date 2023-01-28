@@ -11,9 +11,7 @@ for x in welcome_message:
     sys.stdout.flush()
     sleep(.1)
 
-board = ["-", "-", "-",
-         "-", "-", "-",
-         "-", "-", "-"]
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 winner = None
 name = None
 current_player = "X"
@@ -83,16 +81,23 @@ start_game()
 
 
 def print_board(board):
+    '''
+    tic tac toe board
+    '''
 
-    print(board[0] + " | " + board[1] + " | " + board[2])
-    print("---------")
-    print(board[3] + " | " + board[4] + " | " + board[5])
-    print("---------")
-    print(board[6] + " | " + board[7] + " | " + board[8])
+    print(board[1], " | ", board[2], " | ", board[3], " | ",)
+    print('-'*15)
+    print(board[4], " | ", board[5], " | ", board[6], " | ",)
+    print('-'*15)
+    print(board[7], " | ", board[8],  " | ", board[9], " | ",)
+    print('\n')
 
 
 # checking possible winning options
 def check_row(board):
+    '''
+    checks for possible row win
+    '''
     global winner
     if board[0] == board[3] == board[6] and board[0] != "-":
         winner = board[0]
@@ -106,6 +111,9 @@ def check_row(board):
 
 
 def check_diagonally(board):
+    '''
+    checks for possible diagonal win
+    '''
     global winner
     if board[0] == board[4] == board[8] and board[0] != "-":
         winner = board[0]
@@ -116,6 +124,9 @@ def check_diagonally(board):
 
 
 def check_horizontal(board):
+    '''
+    checks for possible horizontal win
+    '''
     global winner
     if board[0] == board[1] == board[2] and board[1] != "-":
         winner = board[0]
@@ -129,6 +140,9 @@ def check_horizontal(board):
 
 
 def check_tie(board):
+    '''
+    checks for a tie, prints a message to let the user know
+    '''
     if board.count("-") > 1:
         return False
     else:
@@ -137,6 +151,9 @@ def check_tie(board):
 
 # switching player 'X' to computer 'O'
 def switch_player():
+    '''
+    switches the player after users move
+    '''
     global current_player
     if current_player == "X":
         current_player = "O"
@@ -146,15 +163,21 @@ def switch_player():
 
 # computer
 def computer(board):
+    '''
+    chooses random move for computers move
+    '''
     while current_player == "O":
-        position = random.randint(0, 8)
+        position = random.randint(1, 9)
         if board[position] == "-":
             board[position] = "O"
             switch_player()
 
 
 # check to see who the winner is
-def check_win(board):  
+def check_win(board):
+    '''
+    checks for the winner or a tie
+    '''
     if check_row(board) or check_diagonally(board) or check_horizontal(board):
         print_board(board)
         if winner == 'X':
@@ -188,6 +211,9 @@ def return_to_main_page():
 
 
 def player_input():
+    '''
+    checks users choice on the board
+    '''
 
     while True:
 
@@ -196,7 +222,7 @@ def player_input():
         while True:
 
             try:
-                
+              
                 user_input = int(input("Enter a number 1-9: "))
                 if user_input in range(1, 10):
                     if board[user_input] == "-":
