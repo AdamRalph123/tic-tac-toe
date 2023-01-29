@@ -89,7 +89,7 @@ As a player:
 # Testing
 Testing was conducted through out my entire project. Pep8 validator came back with no issues.
 
-![screenshot](images/python.validator.png)
+![screenshot](images/PEP8CI.png)
 
 
 # Bugs 

@@ -222,7 +222,7 @@ def player_input():
         while True:
 
             try:
-              
+
                 user_input = int(input("Enter a number 1-9: "))
                 if user_input in range(1, 10):
                     if board[user_input] == ' ':
@@ -230,13 +230,13 @@ def player_input():
                         break      
                     else:
                         print(f"Oops player is in that spot!")
-                        
+
                 else:
                     print("Invalid selection. Number must be between 1-9")
-                    
+
             except ValueError:
                 print("Oops invalid input. Please enter a valid number")
-                        
+
         check_win(board)
         check_tie(board)
         switch_player()
