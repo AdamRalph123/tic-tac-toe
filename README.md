@@ -23,6 +23,7 @@ Tic Tac Toe is a game where two players each take turns in choosing either an 'X
     * [Check win](#check-win)
     * [Check tie](#check-tie)
     * [Game over](#game-over)
+    * [Invalid input](#invalid-input)
 2. [User stories](#user-stories)
 3. [Technology used](#technology-used)
 4. [Testing](#testing)
@@ -56,21 +57,28 @@ After the user has entered their name a welcome message will appear and it will 
 ## Check win
 If the user has won the game a message will appear saying 'you are the winner' if the computer has won it will say 'Oops the computer has won' and the game will the end.
 
-![screenshot](images/winner.png)
-![screenshot](images/computer.win.png)
+![screenshot](images/check-win1.png)
+![screenshot](images/check-win2.png)
 
 
 ## Check tie
 If thr user or the computer has not won thr game will end in a tie and a message will appear saying 'its a tie' and the game will end. If the user has picked a spot thats already taken it will let the usre know and they will have to choose a differnt spot.
 
-![screenshot](images/tie.png)
-![screenshot](images/player.in.spot.png)
+![screenshot](images/check-tie.png)
+![screenshot](images/different-spot.png)
 
 
 ## Game over
 After the ended in a win or tie a game over message will appear and it will ask the user if the want to quit the game, when pressed a thank you message will appear.
 
-![screenshot](images/quit.option.png)
+![screenshot](images/game-over.png)
+
+## Invalid input
+If the user enters a letter when asked to enter a number 1-9 a message will appear saying 'Oops invalid input. Please enter a valid number.
+
+If the user enters a number thats not between 1-9 and message will appear saying 'Invalid selection. Number must be between 1-9
+
+![screenshot](images/invalid-input.png)
 
 
 # User stories
