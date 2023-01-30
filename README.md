@@ -109,11 +109,28 @@ If was to make this game again I would add a scoreboard so the user can keep tra
 
 
 # Deployment
-Steps for deployment:
-* Create a new heroku app
-* Set the buildbacks to python and nodejs in that order
-* Link the heroku app to the repository
-* Click on deploy
+The project was developed through Gitpod using the template provided by Code Institute.
+
+The is made using [Heroku](https://www.heroku.com/) the steps are listed below
+
+1. Login or register on Heroku.
+2. Click on 'new' in the dashboard and select 'create new app'.
+3. Select a name for your app and choose your region.
+4. Click on 'create new app'
+5. To improve compatibility with various python libraries add Config Var with Key = Port
+and the Value = 8000.
+6. Add 2 buildpacks: Python and the Nodejs in that order.
+7. Go back to the top and click on 'Deploy' and select 'Github'.
+8. Scroll down and click on 'Connect to Github'.
+9. Go back at the top and click on 'Deploy' and select 'GitHub'.
+10. Scroll down and click on 'Connect to GitHub'.
+11. Search for your GitHub repository name by typing it.
+12. Click on 'Connect'.
+Scroll down and click on 'Deploy Branch'.
+13. You will see a message saying 'The app was successfully deployed' when the app is built with python and all the depencenies.
+
+
+
 
 
 # Credits 
