@@ -107,10 +107,10 @@ If the user enters a number thats not between 1-9 and message will appear saying
 I had a bug in my code when playing the game, if I won the game with enetering 3 inputs, the board would only show 2 inputs instead of three, I fixed this bug by adding print_board(board) in my check_win function.
 
 # Python Libraries used
-[Sys](https://docs.python.org/3/library/sys.html) for specific parameters and functions
-[Random](https://docs.python.org/3/library/random.html) for computer random moves
-[Time](https://docs.python.org/3/library/time.html) for game starting game statment after a few seconds
-[sleep](https://www.programiz.com/python-programming/time/sleep) animation for welcome title
+* [Sys](https://docs.python.org/3/library/sys.html) for specific parameters and functions
+* [Random](https://docs.python.org/3/library/random.html) for computer random moves
+* [Time](https://docs.python.org/3/library/time.html) for game starting game statment after a few seconds
+* [sleep](https://www.programiz.com/python-programming/time/sleep) animation for welcome title
 
 
 # Future features
