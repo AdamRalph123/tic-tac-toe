@@ -23,15 +23,16 @@ Tic Tac Toe is a game where two players each take turns in choosing either an 'X
     * [Check win](#check-win)
     * [Check tie](#check-tie)
     * [Game over](#game-over)
-    * [Invalid input](#invalid-input)
 2. [User stories](#user-stories)
 3. [Technology used](#technology-used)
+    * [Invalid input](#invalid-input)
 4. [Testing](#testing)
 5. [Bugs](#bugs)
-6. [Future Features](#future-features)
-7. [Deployment](#deployemnt)
-8. [Credits](#credits)
-9. [Acknowledgement](#acknowledgement)
+6. [Python Libraries used](#python-libraries-used)
+7. [Future Features](#future-features)
+9. [Deployment](#deployemnt)
+9. [Credits](#credits)
+10. [Acknowledgement](#acknowledgement)
 
 
 # Features
@@ -62,7 +63,7 @@ If the user has won the game a message will appear saying 'you are the winner' i
 
 
 ## Check tie
-If thr user or the computer has not won thr game will end in a tie and a message will appear saying 'its a tie' and the game will end. If the user has picked a spot thats already taken it will let the usre know and they will have to choose a differnt spot.
+If the user or the computer has not won thr game will end in a tie and a message will appear saying 'its a tie' and the game will end. If the user has picked a spot thats already taken it will let the usre know and they will have to choose a differnt spot.
 
 ![screenshot](images/check-tie.png)
 ![screenshot](images/different-spot.png)
@@ -72,13 +73,6 @@ If thr user or the computer has not won thr game will end in a tie and a message
 After the ended in a win or tie a game over message will appear and it will ask the user if the want to quit the game, when pressed a thank you message will appear.
 
 ![screenshot](images/game-over.png)
-
-## Invalid input
-If the user enters a letter when asked to enter a number 1-9 a message will appear saying 'Oops invalid input. Please enter a valid number.
-
-If the user enters a number thats not between 1-9 and message will appear saying 'Invalid selection. Number must be between 1-9
-
-![screenshot](images/invalid-input.png)
 
 
 # User stories
@@ -99,9 +93,24 @@ Testing was conducted through out my entire project. Pep8 validator came back wi
 
 ![screenshot](images/PEP8CI.png)
 
+## Invalid input
+I carried out testiing on Heroku to make sure all the Invalid inputs were working. 
+
+If the user enters a letter when asked to enter a number 1-9 a message will appear saying 'Oops invalid input. Please enter a valid number.
+
+If the user enters a number thats not between 1-9 and message will appear saying 'Invalid selection. Number must be between 1-9
+
+![screenshot](images/invalid-input.png)
+
 
 # Bugs 
 I had a bug in my code when playing the game, if I won the game with enetering 3 inputs, the board would only show 2 inputs instead of three, I fixed this bug by adding print_board(board) in my check_win function.
+
+# Python Libraries used
+[Sys](https://docs.python.org/3/library/sys.html) for specific parameters and functions
+[Random](https://docs.python.org/3/library/random.html) for computer random moves
+[Time](https://docs.python.org/3/library/time.html) for game starting game statment after a few seconds
+[sleep](https://www.programiz.com/python-programming/time/sleep) animation for welcome title
 
 
 # Future features
@@ -128,9 +137,6 @@ and the Value = 8000.
 12. Click on 'Connect'.
 Scroll down and click on 'Deploy Branch'.
 13. You will see a message saying 'The app was successfully deployed' when the app is built with python and all the depencenies.
-
-
-
 
 
 # Credits 

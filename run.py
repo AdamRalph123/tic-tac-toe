@@ -2,6 +2,7 @@
 from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
 import random  # computers turn
+import time # for game starting game statement to disappear after a few seconds
 
 # welcome title with animation
 welcome_message = "Welcome to the Tic Tac Toe game!\n"
